@@ -23,11 +23,10 @@ jobs:
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v0'
         
-      - name: cd
-        run: cd server
         
       - name: GCloud build
         run: |-
+          cd server \
           gcloud builds submit \
             --quiet \
             --tag gcr.io/flask-gcloud-xxxx/flask-gcloud
