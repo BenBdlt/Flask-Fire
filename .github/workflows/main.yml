@@ -15,12 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Set up gcloud Cloud SDK environment
-        uses: google-github-actions/setup-gcloud@v0.2.0
-        with:
-          service_account_email: studiogalactik@gmail.com
-          project_id: flask-gcloud-xxxx
-      
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+          
+      - name: 'Use gcloud CLI'
+        run: 'gcloud info'
+        
       - name: Deploy Gcloud
         run: |
           cd server
