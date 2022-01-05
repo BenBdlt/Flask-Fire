@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+
+body {
+    font-family: 'Lobster', cursive;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
