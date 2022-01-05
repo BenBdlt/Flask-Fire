@@ -16,11 +16,9 @@ jobs:
       - uses: actions/checkout@master
       
       - name: 'Set up Cloud SDK'
-        uses: google-github-actions/setup-gcloud@v0
+        uses: 'google-github-actions/auth@v0'
         with:
-          service_account_email: flask-fire2@flask-gcloud-xxxx.iam.gserviceaccount.com
-          service_account_key: fa2b953e440ca1b4aeeca697889dfcfef979f06a
-          export_default_credentials: true
+          credentials_json: '${{ secrets.GCP_CREDS }}'
 
       - name: Deploy Gcloud
         run: |
