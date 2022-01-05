@@ -26,8 +26,8 @@ jobs:
       - name: Deploy Gcloud
         run: |
           cd server
-          gcloud builds submit --tag gcr.io/flask-fire-xxxx/flask-fire
-          gcloud beta run deploy --image gcr.io/flask-fire-xxxx/flask-fire
+          gcloud builds submit --tag gcr.io/flask-gcloud-xxxx/flask-gcloud
+          gcloud beta run deploy --image gcr.io/flask-gcloud-xxxx/flask-gcloud
           gcloud config set run/region europe-west1
           cd ..
       
