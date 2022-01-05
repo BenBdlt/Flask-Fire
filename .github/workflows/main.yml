@@ -26,9 +26,9 @@ jobs:
       - name: Deploy Gcloud
         run: |
           cd server
-          gcloud builds submit --tag gcr.io/flask-gcloud-xxxx/flask-gcloud
-          gcloud beta run deploy --image gcr.io/flask-gcloud-xxxx/flask-gcloud
-          gcloud config set run/region europe-west1
+          gcloud builds submit --tag gcr.io/flask-gcloud-xxxx/flask-gcloud --quiet
+          gcloud beta run deploy --image gcr.io/flask-gcloud-xxxx/flask-gcloud --quiet
+          gcloud config set run/region europe-west1 --quiet
           cd ..
       
       - name: Firebase install
