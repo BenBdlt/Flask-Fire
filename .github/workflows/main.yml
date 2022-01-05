@@ -21,9 +21,13 @@ jobs:
       - name: 'Use gcloud CLI'
         run: 'gcloud info'
         
-      - name: Deploy Gcloud
+      - name: gcloud login
         run: |
           cd server
+          gcloud auth login
+          
+      - name: Deploy Gcloud
+        run: |
           gcloud builds submit --tag gcr.io/flask-gcloud-xxxx/flask-gcloud --project flask-gcloud
           gcloud beta run deploy --image gcr.io/flask-gcloud-xxxx/flask-gcloud --project flask-gcloud
           cd ..
