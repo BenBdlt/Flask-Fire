@@ -18,8 +18,8 @@ jobs:
       - name: 'Set up Cloud SDK'
         uses: google-github-actions/setup-gcloud@v0.2.0
         with:
-          service_account_email: ${{ secrets.GCP_EMAIL }}
-          service_account_key: ${{ secrets.GCP_KEY }}
+          service_account_email: flask-fire2@flask-gcloud-xxxx.iam.gserviceaccount.com
+          service_account_key: 113821190542777499314
           project_id: flask-fire-xxxx
           export_default_credentials: true
 
