@@ -23,11 +23,6 @@ jobs:
           
       - name: 'Use gcloud CLI'
         run: 'gcloud info'
-        
-      - name: gcloud login
-        run: |
-          cd server
-          gcloud auth login
           
       - name: Deploy Gcloud
         run: |
