@@ -18,6 +18,7 @@ jobs:
       - name: Deploy Gcloud
         run: |
           cd server
+          gcloud config set project flask-gcloud
           gcloud builds submit --tag gcr.io/flask-gcloud-xxxx/flask-gcloud
           gcloud beta run deploy --image gcr.io/flask-gcloud-xxxx/flask-gcloud
           cd ..
