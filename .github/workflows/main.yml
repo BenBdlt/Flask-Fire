@@ -1,0 +1,28 @@
+name: Testing
+
+on:
+  pull_request:
+    branches: [ master ]
+    
+  workflow_dispatch:
+
+jobs:
+  build:
+  
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Deploy Gcloud
+        run: |
+          gcloud builds submit --tag gcr.io/flask-gcloud-xxxx/flask-gcloud
+          cd server
+          gcloud beta run deploy --image gcr.io/flask-gcloud-xxxx/flask-gcloud
+      
+      - name: Firebase install
+        run: npm install firebase-tools
+        
+      - name: Deploy firebase
+        run: firebase deploy
