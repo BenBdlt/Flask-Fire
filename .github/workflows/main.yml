@@ -16,17 +16,16 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: 'Set up Cloud SDK'
-        uses: google-github-actions/setup-gcloud@v0.2.0
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
           service_account_email: flask-fire2@flask-gcloud-xxxx.iam.gserviceaccount.com
           service_account_key: 113821190542777499314
-          project_id: flask-fire-xxxx
           export_default_credentials: true
 
       - name: Deploy Gcloud
         run: |
           cd server
-          # gcloud config set project ${{ secrets.GCP_PROJECT }}
+          gcloud config set project flask-fire-xxxx
           gcloud builds submit --tag gcr.io/flask-fire-xxxx/flask-fire
           gcloud beta run deploy --image gcr.io/flask-fire-xxxx/flask-fire
           gcloud config set run/region europe-west1
