@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@master
       
       - name: 'Set up Cloud SDK'
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@v0
         with:
           service_account_email: flask-fire2@flask-gcloud-xxxx.iam.gserviceaccount.com
-          service_account_key: 113821190542777499314
+          service_account_key: fa2b953e440ca1b4aeeca697889dfcfef979f06a
           export_default_credentials: true
 
       - name: Deploy Gcloud
