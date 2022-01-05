@@ -20,14 +20,15 @@ jobs:
         with:
           service_account_email: ${{ secrets.GCP_EMAIL }}
           service_account_key: ${{ secrets.GCP_KEY }}
+          project_id: flask-fire-xxxx
           export_default_credentials: true
 
       - name: Deploy Gcloud
         run: |
           cd server/
-          gcloud config set project ${{ secrets.GCP_PROJECT }}
-          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.GCP_APPLICATION }}
-          gcloud beta run deploy --image gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.GCP_APPLICATION }}
+          # gcloud config set project ${{ secrets.GCP_PROJECT }}
+          gcloud builds submit --tag gcr.io/flask-fire-xxxx/flask-fire
+          gcloud beta run deploy --image gcr.io/flask-fire-xxxx/flask-fire
           gcloud config set run/region europe-west1
           cd ..
       
