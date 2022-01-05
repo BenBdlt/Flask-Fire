@@ -25,7 +25,7 @@ jobs:
 
       - name: Deploy Gcloud
         run: |
-          cd server/
+          cd server
           # gcloud config set project ${{ secrets.GCP_PROJECT }}
           gcloud builds submit --tag gcr.io/flask-fire-xxxx/flask-fire
           gcloud beta run deploy --image gcr.io/flask-fire-xxxx/flask-fire
