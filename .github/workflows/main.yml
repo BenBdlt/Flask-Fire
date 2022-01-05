@@ -15,22 +15,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: 'set account'
-        run: |
-          gcloud config set account studiogalactik@gmail.com
-          gcloud auth activate-service-account studiogalactik@gmail.com
-      
       - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v0'
-          
-      - name: 'Use gcloud CLI'
-        run: 'gcloud info'
-          
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          service_account_email: ${{ secrets.GCP_EMAIL }}
+          service_account_key: ${{ secrets.GCP_KEY }}
+          export_default_credentials: true
+
       - name: Deploy Gcloud
         run: |
           cd server/
-          gcloud builds submit --tag gcr.io/flask-gcloud-xxxx/flask-gcloud --project flask-gcloud
-          gcloud beta run deploy --image gcr.io/flask-gcloud-xxxx/flask-gcloud --project flask-gcloud
+          gcloud config set project ${{ secrets.GCP_PROJECT }}
+          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.GCP_APPLICATION }}
+          gcloud beta run deploy --image gcr.io/${{ secrets.GCP_PROJECT }}/${{ secrets.GCP_APPLICATION }}
+          gcloud config set run/region europe-west1
           cd ..
       
       - name: Firebase install
