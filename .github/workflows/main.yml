@@ -16,7 +16,9 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: 'set account'
-        run: gcloud config set account studiogalactik@gmail.com
+        run: |
+          gcloud config set account studiogalactik@gmail.com
+          gcloud auth activate-service-account studiogalactik@gmail.com
       
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v0'
