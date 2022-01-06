@@ -1,17 +1,16 @@
-name: Testing
+name: Deploy
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
     
   workflow_dispatch:
 
 jobs:
-  build:
+
+  gcloud:
   
-    name: Build & Deploy
+    name: gcloud setup + deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +38,15 @@ jobs:
             --image gcr.io/flask-gcloud-xxxx/flask-gcloud \
             --region europe-west1
           cd ..
-            
+          
+  firebase:
+  
+    name: firebase setup + deploy
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@master
+                  
       - name: Firebase install
         run: npm install -g firebase-tools
         
