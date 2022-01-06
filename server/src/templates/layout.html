@@ -5,13 +5,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Flask-fire 🔥</title>
-	<link rel="stylesheet" href="static/style.css">
+	<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 <body>
 	<div class="navbar">
 		<ul>
-			<li><a href="" class="{{'active' if request.path == '/'}}">Home</a></li>
-			<li><a href="" class="{{'active' if request.path == '/profile'}}">Profile</a></li>
+			<li><a href="{{url_for('index')}}" class="{{'active' if request.path == '/'}}">Home</a></li>
+			<li><a href="{{url_for('profile')}}" class="{{'active' if request.path == '/profile'}}">Profile</a></li>
 		</ul>
 	</div>
 	<div class="container">
