@@ -33,7 +33,7 @@ jobs:
           
       - name: GCloud deploy
         run: |
-          gcloud --quiet  beta run deploy \
+          gcloud --quiet beta run deploy flask-fire2 \
             --image gcr.io/flask-gcloud-xxxx/flask-gcloud
           cd ..
             
