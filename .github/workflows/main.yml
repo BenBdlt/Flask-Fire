@@ -41,7 +41,7 @@ jobs:
           cd ..
             
       - name: Firebase install
-        run: npm install firebase-tools
+        run: npm install -g firebase-tools
         
       - name: Deploy firebase
         run: firebase deploy
