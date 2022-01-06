@@ -31,12 +31,12 @@ jobs:
             --quiet \
             --tag gcr.io/flask-gcloud-xxxx/flask-gcloud
           
-          cd ..
       - name: GCloud deploy
         run: |
           gcloud beta run deploy \
             --quiet \
             --image gcr.io/flask-gcloud-xxxx/flask-gcloud
+          cd ..
             
       - name: Firebase install
         run: npm install firebase-tools
