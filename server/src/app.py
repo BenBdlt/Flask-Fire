@@ -21,7 +21,12 @@ def index():
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    template = render_template('profile.html')
+    # 2
+    response = make_response(template)
+    # 3
+    response.headers['Cache-Control'] = 'public, max-age=300, s-maxage=600'
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))

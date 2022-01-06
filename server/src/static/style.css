@@ -14,3 +14,10 @@ body {
     justify-content: center;
     text-align: center;
 }
+
+.container a {
+    color: #111;
+    margin: 10px;
+    background: skyblue;
+    padding: 10px 20px;
+}
