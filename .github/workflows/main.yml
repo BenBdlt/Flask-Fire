@@ -25,15 +25,15 @@ jobs:
         
         
       - name: GCloud build
-        run: |-
-          cd server \
+        run: |
+          cd server/ \
           gcloud builds submit \
             --quiet \
             --tag gcr.io/flask-gcloud-xxxx/flask-gcloud
           
           cd ..
       - name: GCloud deploy
-        run: |-
+        run: |
           gcloud beta run deploy \
             --quiet \
             --image gcr.io/flask-gcloud-xxxx/flask-gcloud
