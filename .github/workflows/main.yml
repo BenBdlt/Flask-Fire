@@ -1,0 +1,26 @@
+name: Tests and build
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ dev ]
+
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - uses: actions/checkout@v2
+
+      - name: test
+        run: echo test
+
+      - name: NPM
+        run: |
+          npm install
+          npm run build
