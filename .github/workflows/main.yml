@@ -1,6 +1,8 @@
 name: Testing
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ master ]
     
@@ -13,16 +15,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@master
       
-      - name: Deploy Gcloud
+      - name: 'Setup auth Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDS }}'
+          
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+        
+        
+      - name: GCloud build
         run: |
-          gcloud builds submit --tag gcr.io/flask-gcloud-xxxx/flask-gcloud
           cd server
-          gcloud beta run deploy --image gcr.io/flask-gcloud-xxxx/flask-gcloud
-      
+          gcloud builds submit \
+            --quiet \
+            --tag gcr.io/flask-gcloud-xxxx/flask-gcloud
+          
+      - name: GCloud deploy
+        run: |
+          gcloud --quiet beta run deploy flask-fire2 \
+            --image gcr.io/flask-gcloud-xxxx/flask-gcloud \
+            --region europe-west1
+          cd ..
+            
       - name: Firebase install
-        run: npm install firebase-tools
+        run: npm install -g firebase-tools
         
       - name: Deploy firebase
-        run: firebase deploy
+        run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
