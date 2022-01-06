@@ -35,7 +35,7 @@ jobs:
           
       - name: GCloud deploy
         run: |
-          gcloud --quiet beta run deploy flask-fire2 \
+          gcloud --quiet beta run deploy flask-gcloud \
             --image gcr.io/flask-gcloud-xxxx/flask-gcloud \
             --region europe-west1
           cd ..
