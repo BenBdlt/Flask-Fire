@@ -1,0 +1,10 @@
+{
+  "apiKey": "AIzaSyA_uPcxueUG7I92zUDiqVuaSmKLJhWCcd0",
+  "authDomain": "flask-gcloud-xxxx.firebaseapp.com",
+  "projectId": "flask-gcloud-xxxx",
+  "storageBucket": "flask-gcloud-xxxx.appspot.com",
+  "messagingSenderId": "521628779214",
+  "appId": "1:521628779214:web:95e0ed6ebceaf38c72869f",
+  "measurementId": "G-YHT5XTDXKJ",
+  "databaseURL": "https://flask-gcloud-xxxx-default-rtdb.europe-west1.firebasedatabase.app/"
+}

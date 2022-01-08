@@ -48,3 +48,54 @@ background-color: black;
 .left-text {
     text-align: left;
 }
+
+
+/***** AUTH *****/
+
+.register {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(235, 235, 235);
+    padding: 2rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+.register h3 {
+    margin-top: 0;
+}
+.register p {
+    text-align: left;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+}
+.register input {
+    transition: 0.4s;
+    margin-left: 0;
+    display: flex;
+    margin-top: 0;
+    background-color: rgba(207, 207, 207, 0.3);
+    border: none;
+    border-bottom: 3px solid rgb(255, 102, 0, 0.5);
+    font-size: 20px;
+}
+.register input:focus {
+    transition: 0.6s;
+    outline: none;
+    border-bottom: 3px solid rgb(255, 102, 0);
+}
+.register-btn {
+    transition: 0.5s;
+    margin-top: 3rem;
+    padding: 0.6rem;
+    font-size: 18px;
+    background-color: rgb(255, 102, 0, 0.9);
+    border: 3px solid rgb(255, 102, 0, 0.1);
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+}
+.register-btn:hover {
+    transition: 0.3s;
+    background-color: rgb(235, 235, 235);
+    color: rgb(255, 102, 0);
+    border: 3px solid rgb(255, 102, 0);
+}
