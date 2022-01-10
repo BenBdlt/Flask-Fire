@@ -1,5 +1,5 @@
 import imp
-from flask import Blueprint, render_template, make_response, request
+from flask import Blueprint, render_template, make_response, request, redirect, url_for, session
 import os
 import time
 import pyrebase
@@ -62,12 +62,26 @@ def signup():
                 email=email,
                 password=password
             )
-            return {'message': f'Successfully created user {user.uid}'},200
+            # user = pb.auth().sign_in_with_email_and_password(email, password)
+            return redirect(url_for('main.profile'))
+            # return {'message': 'OUI'},200
         except:
             return {'message': 'Error creating user'},400
     
     return response
     
+#LOGIN
+@main.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == 'POST':
+        email = request.form.get("mail-form")
+        password = request.form.get("pswd-form")
+        user = pb.auth().sign_in_with_email_and_password(email, password)
+        user = pb.auth().refresh(user['refreshToken'])
+        user_id = user['idToken']
+        # session['usr'] = user_id
+        return redirect(url_for('main.profile', actual_user=user_id))
+    return render_template('login.html')
 
 
 #Api route to get a new token for a valid user
@@ -105,9 +119,10 @@ def index():
 
 @main.route('/profile')
 def profile():
-    template = render_template('profile.html')
-    # 2
-    response = make_response(template)
-    # 3
-    response.headers['Cache-Control'] = 'public, max-age=300, s-maxage=600'
-    return response
+    return render_template('profile.html')
+    # template = render_template('profile.html')
+    # # 2
+    # response = make_response(template)
+    # # 3
+    # response.headers['Cache-Control'] = 'public, max-age=300, s-maxage=600'
+    # return response

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>Connexion</h1>
+
+<div class="container">
+    <div class="auth_content">
+        <div class="register">
+            <h3>Se connecter</h3>
+            <form action="" method="post" novalidate>
+                <p>Email</p>
+                <input name="mail-form" type="text">
+                <p>Mot de passe</p>
+                <input name="pswd-form" type="password">
+                <button class="register-btn" type="submit">
+                    Connecter
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
